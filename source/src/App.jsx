@@ -14,6 +14,11 @@ const CONTACT = {
   site: 'https://www.bazelet-pharma.co.il/',
 };
 
+// In these sub-categories the outer packaging is shown first, inner components after it
+const outerFirst = (subId) => subId === 'oil-products' || subId.startsWith('combo-');
+const sortProducts = (subId, list) =>
+  outerFirst(subId) ? [...list.filter((p) => !p.isInternal), ...list.filter((p) => p.isInternal)] : list;
+
 const pad = (n) => String(n).padStart(2, '0');
 const packWord = (n) => (n === 1 ? 'אריזה' : 'אריזות');
 
@@ -239,7 +244,7 @@ export default function App() {
 
   // ---------- Level 3 ----------
   const renderProducts = () => {
-    const prods = getProductsBySubcategory(sub.id);
+    const prods = sortProducts(sub.id, getProductsBySubcategory(sub.id));
     return (
       <>
         <Hero crumbs={crumbsFor()} title={singleSub ? main.name : sub.name} text={sub.description} />
