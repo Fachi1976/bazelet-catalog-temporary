@@ -17,6 +17,16 @@ const sizeOverrides = {
 
 const MIN_SIZE = 0.4;
 
+// Products whose images come from the 3D studio: already rendered at one fixed
+// scale per category (true proportions), so the card must NOT shrink them again.
+const trueScale = new Set([
+  'combo-flower-minis-horizontal', 'combo-flower-minis-vertical', 'combo-flower-minis-container',
+  'combo-sativa-indica-horizontal', 'combo-sativa-indica-vertical', 'combo-sativa-indica-container',
+  'combo-preroll-flower-box', 'combo-preroll-flower-container', 'combo-preroll-flower-tray',
+  'combo-preroll-oil-box', 'combo-preroll-oil-tray',
+  'combo-flower-oil-box', 'combo-flower-oil-container',
+]);
+
 // white items get a slightly darker card background so they don't disappear
 const darkTile = new Set([
   'jar-container', 'jar-box',
@@ -63,7 +73,7 @@ for (const p of products) {
 
 export function productDisplay(p) {
   const l = longest(p);
-  let size = sizeOverrides[p.id] ?? (l ? l / maxBySub[p.subcategoryId] : 1);
+  let size = trueScale.has(p.id) ? 1 : (sizeOverrides[p.id] ?? (l ? l / maxBySub[p.subcategoryId] : 1));
   size = Math.max(MIN_SIZE, Math.min(1, size));
   return {
     size,

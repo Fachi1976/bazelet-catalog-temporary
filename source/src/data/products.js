@@ -678,7 +678,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-shorts-tray.png' }
+    images: { primary: './images/products/combo-preroll-tray.png' }
   },
   {
     id: 'combo-preroll-flower-box',
