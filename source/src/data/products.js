@@ -501,7 +501,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-tube-closed.png' }
+    images: { primary: './images/products/preroll-tube-closed-legacy.png' }
   },
 
   // קופסא לתרמיל בודד - מגולגלת 1.5 גרם
@@ -586,7 +586,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-tube-closed.png' }
+    images: { primary: './images/products/preroll-tube-closed-legacy.png' }
   },
 
   // קופסא לתרמיל בודד - מגולגלת 2 גרם

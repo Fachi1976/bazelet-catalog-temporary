@@ -27,6 +27,7 @@ const trueScale = new Set([
   'combo-flower-oil-box', 'combo-flower-oil-container',
   'flower-standard', 'flower-gift', 'flower-pouch', 'flower-gift-pouch',
   'minis-box-container', 'minis-container',
+  'preroll-slims-standard', 'preroll-slims-gift', 'preroll-slims-tube', 'preroll-slims-cone',
 ]);
 
 // white items get a slightly darker card background so they don't disappear
