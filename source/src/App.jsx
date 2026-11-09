@@ -121,10 +121,10 @@ function CategoryCard({ index, item, count, onClick }) {
 }
 
 function ProductCard({ index, product, onClick }) {
-  const { size, base, hover, dark } = productDisplay(product);
+  const { size, base, hover, dark, studio } = productDisplay(product);
   return (
     <button className="card product" onClick={onClick}>
-      <div className={`card-photo ${dark ? 'dark' : ''}`} style={{ '--s': size }}>
+      <div className={`card-photo ${dark ? 'dark' : ''} ${studio ? 'studio' : ''}`} style={{ '--s': size }}>
         <span className="card-idx">{pad(index + 1)}</span>
         {product.isInternal && <span className="card-count internal">רכיב פנימי</span>}
         <img className="img-base sized" src={base || PLACEHOLDER} alt={product.name} loading="lazy"

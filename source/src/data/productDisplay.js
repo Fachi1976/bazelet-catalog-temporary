@@ -77,6 +77,7 @@ export function productDisplay(p) {
   size = Math.max(MIN_SIZE, Math.min(1, size));
   return {
     size,
+    studio: trueScale.has(p.id),
     base: baseOverrides[p.id] || p.images?.primary || p.gallery?.closed?.[0],
     hover: hover[p.id] || null,
     dark: darkTile.has(p.id),
