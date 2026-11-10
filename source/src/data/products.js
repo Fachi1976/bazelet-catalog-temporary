@@ -693,7 +693,7 @@ export const products = [
     sku: 'BZL-OL-004',
     subcategoryId: 'oil-products',
     name: 'בקבוק שפריצר',
-    description: 'בקבוק ענבר 15 מ"ל עם שפריצר מדוד, ממולא 10 מ"ל',
+    description: 'בקבוק זכוכית כהה עם שפריצר',
     specs: { volume: '10 מ"ל', material: 'זכוכית + פלסטיק', closure: 'שפריצר' , dimensions: '28.5 × 86 מ"מ'},
     tags: ['IMC-GMP'],
     hasToggle: false,
