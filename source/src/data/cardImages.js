@@ -4,9 +4,12 @@
 // hover = התמונה שמתחלפת כשמרחפים עם העכבר
 // כדי להחליף תמונה: שימי קובץ חדש בתיקייה images/cards ועדכני את השם כאן
 // =============================================================
+// studio: true = image comes from the 3D studio (has its own shadow)
+const old3d = new Set(['prerolls-025', 'prerolls-15', 'prerolls-2']);
 const card = (id, opts = {}) => ({
   base: `./images/cards/${id}.webp`,
   hover: `./images/cards/${id}-hover.webp`,
+  studio: !old3d.has(id),
   ...opts,
 });
 // dark: true = רקע מעט כהה יותר לכרטיס, לפריטים לבנים שנבלעים ברקע

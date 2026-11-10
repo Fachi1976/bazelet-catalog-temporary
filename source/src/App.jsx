@@ -99,7 +99,7 @@ function CategoryCard({ index, item, count, onClick }) {
   const img = cardImages[item.id];
   return (
     <button className="card" onClick={onClick}>
-      <div className={`card-photo ${img?.dark ? 'dark' : ''}`}>
+      <div className={`card-photo ${img?.dark ? 'dark' : ''} ${img?.studio ? 'studio' : ''}`}>
         <span className="card-idx">{pad(index + 1)}</span>
         <span className="card-count">{count} {packWord(count)}</span>
         {img ? (
