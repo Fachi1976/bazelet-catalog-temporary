@@ -30,6 +30,7 @@ const trueScale = new Set([
   'preroll-slims-standard', 'preroll-slims-gift', 'preroll-slims-tube', 'preroll-slims-cone',
   'jar-container', 'jar-box',
   'oil-dropper', 'oil-box',
+  'combo-preroll-oil-preroll-open', 'combo-flower-oil-flower-open',
 ]);
 
 // white items get a slightly darker card background so they don't disappear
