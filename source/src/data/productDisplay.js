@@ -32,10 +32,12 @@ const trueScale = new Set([
   'oil-dropper', 'oil-box',
   'combo-preroll-oil-preroll-open', 'combo-flower-oil-flower-open',
   'flower-small-box', 'flower-doy-pouch', 'flower-small-gift',
+  'jar-container-short', 'jar-box-short', 'combo-preroll-oil-spritzer', 'combo-flower-oil-spritzer',
 ]);
 
 // white items get a slightly darker card background so they don't disappear
 const darkTile = new Set([
+  'jar-container-short', 'jar-box-short',
   'jar-container', 'jar-box',
   'preroll-slims-tube', 'preroll-15-tube', 'preroll-2-tube',
 ]);
@@ -46,6 +48,7 @@ const baseOverrides = {
 };
 
 const hover = {
+  'jar-box-short': './images/products/jar-box-short-open.png',
   'oil-box': './images/products/oil-bottle-box-open.png',
   'jar-box': './images/products/jar-box-open.png',
   'flower-standard': './images/products/flower-box-standard-open.png',

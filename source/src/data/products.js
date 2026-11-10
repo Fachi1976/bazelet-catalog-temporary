@@ -326,6 +326,32 @@ export const products = [
     gallery: null,
     images: { primary: './images/products/jar-box.png' }
   },
+  {
+    id: 'jar-container-short',
+    sku: 'BZL-JR-003',
+    subcategoryId: 'jar',
+    name: 'צנצנת נמוכה',
+    description: 'צנצנת נמוכה לתפרחות',
+    specs: { volume: '10 גרם', material: 'פלסטיק', closure: 'מכסה בהברגה' , dimensions: '95.5 × 64 מ"מ'},
+    tags: ['child-resistant', 'IMC-GMP'],
+    hasToggle: false,
+    isInternal: true,
+    gallery: null,
+    images: { primary: './images/products/jar-container-short.png' }
+  },
+  {
+    id: 'jar-box-short',
+    sku: 'BZL-JR-004',
+    subcategoryId: 'jar',
+    name: 'קופסא לצנצנת נמוכה',
+    description: 'קופסא לצנצנת נמוכה',
+    specs: { volume: '10 גרם', material: 'קרטון', closure: 'פתיחה עליונה' , dimensions: '100 × 65 מ"מ'},
+    tags: ['IMC-GMP'],
+    hasToggle: false,
+    isInternal: false,
+    gallery: null,
+    images: { primary: './images/products/jar-box-short.png' }
+  },
 
   // =============================================================
   // מגולגלות 0.5 גרם (סלים → מגולגלות)
