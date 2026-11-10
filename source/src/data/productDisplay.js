@@ -31,6 +31,7 @@ const trueScale = new Set([
   'jar-container', 'jar-box',
   'oil-dropper', 'oil-box',
   'combo-preroll-oil-preroll-open', 'combo-flower-oil-flower-open',
+  'flower-small-box', 'flower-doy-pouch',
 ]);
 
 // white items get a slightly darker card background so they don't disappear
