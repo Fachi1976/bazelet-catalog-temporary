@@ -675,6 +675,32 @@ export const products = [
     gallery: null,
     images: { primary: './images/products/oil-bottle-box.png' }
   },
+  {
+    id: 'oil-spritzer-box',
+    sku: 'BZL-OL-003',
+    subcategoryId: 'oil-products',
+    name: 'קופסא לבקבוק שפריצר',
+    description: 'קופסא לבקבוק שמן עם שפריצר',
+    specs: { volume: '10 מ"ל', material: 'קרטון', closure: 'פתיחה עליונה' , dimensions: '42 × 95 מ"מ'},
+    tags: ['IMC-GMP'],
+    hasToggle: false,
+    isInternal: false,
+    gallery: null,
+    images: { primary: './images/products/oil-spritzer-box.png' }
+  },
+  {
+    id: 'oil-spritzer-bottle',
+    sku: 'BZL-OL-004',
+    subcategoryId: 'oil-products',
+    name: 'בקבוק שפריצר',
+    description: 'בקבוק ענבר 15 מ"ל עם שפריצר מדוד, ממולא 10 מ"ל',
+    specs: { volume: '10 מ"ל', material: 'זכוכית + פלסטיק', closure: 'שפריצר' , dimensions: '28.5 × 86 מ"מ'},
+    tags: ['IMC-GMP'],
+    hasToggle: false,
+    isInternal: true,
+    gallery: null,
+    images: { primary: './images/products/oil-spritzer-bottle.png' }
+  },
 
   // =============================================================
   // משולב: מגולגלות + תפרחת (ללא שינויים במוצרים אלו)
