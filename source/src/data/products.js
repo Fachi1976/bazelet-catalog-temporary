@@ -886,7 +886,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/combo-preroll-oil-preroll-open.png' }
+    images: { primary: './images/products/combo-flower-oil-flower-open.png' }
   },
 
   {
