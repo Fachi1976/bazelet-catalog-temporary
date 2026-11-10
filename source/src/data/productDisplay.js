@@ -28,6 +28,7 @@ const trueScale = new Set([
   'flower-standard', 'flower-gift', 'flower-pouch', 'flower-gift-pouch',
   'minis-box-container', 'minis-container',
   'preroll-slims-standard', 'preroll-slims-gift', 'preroll-slims-tube', 'preroll-slims-cone',
+  'jar-container', 'jar-box',
 ]);
 
 // white items get a slightly darker card background so they don't disappear
@@ -42,6 +43,7 @@ const baseOverrides = {
 };
 
 const hover = {
+  'jar-box': './images/products/jar-box-open.png',
   'flower-standard': './images/products/flower-box-standard-open.png',
   'flower-gift': './images/products/flower-box-premium-open.png',
   'flower-small-box': './images/products/minis-pouch-box-open.png',
