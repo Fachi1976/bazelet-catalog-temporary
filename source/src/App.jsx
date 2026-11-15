@@ -97,7 +97,7 @@ function ImageGallery({ images, alt }) {
 // =====================================================
 let mvLoad = null;
 // Animated box: click/tap the box (or the button) to open/close it while rotating
-function AnimatedModel({ src, alt, poster, radius, targetOpen }) {
+function AnimatedModel({ src, alt, poster, radius, targetOpen, noOpen }) {
   const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -133,12 +133,12 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen }) {
   const onDown = (e) => { down.current = { x: e.clientX, y: e.clientY, t: Date.now() }; };
   const onUp = (e) => {
     const d = down.current; down.current = null;
-    if (d && Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6 && Date.now() - d.t < 500) toggle();
+    if (!noOpen && d && Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6 && Date.now() - d.t < 500) toggle();
   };
   if (!ready) return <div className="gallery"><div className="gallery-stage"><img src={poster || PLACEHOLDER} alt={alt} /></div></div>;
   return (
     <div className="gallery model">
-      <button className="open-btn" onClick={toggle}>{open ? 'סגירה' : 'פתיחה'}</button>
+      {!noOpen && <button className="open-btn" onClick={toggle}>{open ? 'סגירה' : 'פתיחה'}</button>}
       <model-viewer
         ref={ref}
         key={src}
@@ -163,9 +163,9 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen }) {
         environment-image="./images/models/studio-env.hdr"
         onPointerDown={onDown}
         onPointerUp={onUp}
-        style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent', cursor: 'pointer' }}
+        style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent', cursor: noOpen ? 'grab' : 'pointer' }}
       ></model-viewer>
-      <div className="model-hint">לחצו על האריזה כדי לפתוח · גררו כדי לסובב</div>
+      <div className="model-hint">{noOpen ? 'גררו כדי לסובב · גלגלו להגדלה' : 'לחצו על האריזה כדי לפתוח · גררו כדי לסובב'}</div>
     </div>
   );
 }
@@ -362,6 +362,8 @@ export default function App() {
                   {p.model3d?.anim ? (
                     <AnimatedModel radius={p.model3d.radius} src={p.model3d.anim} targetOpen={p.model3d.targetOpen}
                       alt={p.name} poster={p.images?.primary} />
+                  ) : p.model3d?.static ? (
+                    <AnimatedModel noOpen radius={p.model3d.radius} src={p.model3d.static} alt={p.name} poster={p.images?.primary} />
                   ) : (
                     <ImageGallery images={images} alt={p.name} />
                   )}

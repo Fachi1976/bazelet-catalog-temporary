@@ -281,6 +281,7 @@ export const products = [
 
   {
     id: 'jar-container',
+    model3d: { static: './images/models/anim-jar.glb?v=b2', radius: '0.261m' },
     sku: 'BZL-JR-001',
     subcategoryId: 'jar',
     name: 'צנצנת',
@@ -294,6 +295,7 @@ export const products = [
   },
   {
     id: 'jar-box',
+    model3d: { anim: './images/models/anim-jar-box.glb?v=b2', targetOpen: '0m 0.054m 0m', radius: '0.428m' },
     sku: 'BZL-JR-002',
     subcategoryId: 'jar',
     name: 'קופסא לצנצנת',
@@ -307,6 +309,7 @@ export const products = [
   },
   {
     id: 'jar-container-short',
+    model3d: { static: './images/models/anim-jar-short.glb?v=b2', radius: '0.242m' },
     sku: 'BZL-JR-003',
     subcategoryId: 'jar',
     name: 'צנצנת נמוכה',
@@ -320,6 +323,7 @@ export const products = [
   },
   {
     id: 'jar-box-short',
+    model3d: { anim: './images/models/anim-jar-box-short.glb?v=b2', targetOpen: '0m 0.044m 0m', radius: '0.410m' },
     sku: 'BZL-JR-004',
     subcategoryId: 'jar',
     name: 'קופסא לצנצנת נמוכה',
@@ -609,6 +613,7 @@ export const products = [
 
   {
     id: 'oil-dropper',
+    model3d: { static: './images/models/anim-dropper.glb?v=b2', radius: '0.158m' },
     sku: 'BZL-OL-002',
     subcategoryId: 'oil-products',
     name: 'בקבוק דרופר',
@@ -622,6 +627,7 @@ export const products = [
   },
   {
     id: 'oil-box',
+    model3d: { anim: './images/models/anim-oil-box.glb?v=b2', targetOpen: '0m 0.057m 0m', radius: '0.272m' },
     sku: 'BZL-OL-001',
     subcategoryId: 'oil-products',
     name: 'קופסא',
@@ -635,6 +641,7 @@ export const products = [
   },
   {
     id: 'oil-spritzer-box',
+    model3d: { anim: './images/models/anim-spritzer-box.glb?v=b2', targetOpen: '0m 0.064m 0m', radius: '0.294m' },
     sku: 'BZL-OL-003',
     subcategoryId: 'oil-products',
     name: 'קופסא לבקבוק שפריצר',
@@ -648,6 +655,7 @@ export const products = [
   },
   {
     id: 'oil-spritzer-bottle',
+    model3d: { static: './images/models/anim-spritzer.glb?v=b2', radius: '0.201m' },
     sku: 'BZL-OL-004',
     subcategoryId: 'oil-products',
     name: 'בקבוק שפריצר',
