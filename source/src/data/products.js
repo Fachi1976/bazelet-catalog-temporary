@@ -437,7 +437,7 @@ export const products = [
   // אריזה (קופסא + מגירה → אריזה)
   {
     id: 'preroll-shorts-box',
-    model3d: { anim: './images/models/anim-shorts.glb?v=a1', targetOpen: '0.026m 0.024m 0m', radius: '0.427m', closed: './images/models/preroll-shorts-closed.glb?v=056c7e4', open: './images/models/preroll-shorts-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-shorts.glb?v=a3', targetOpen: '0.026m 0.024m 0m', radius: '0.427m', closed: './images/models/preroll-shorts-closed.glb?v=056c7e4', open: './images/models/preroll-shorts-open.glb?v=056c7e4' },
     sku: 'BZL-PH-001',
     subcategoryId: 'prerolls-025',
     name: 'אריזה',
@@ -490,7 +490,7 @@ export const products = [
   // אריזה סטנדרטית - 7 מגולגלות 1.5 גרם
   {
     id: 'preroll-15-standard',
-    model3d: { anim: './images/models/anim-pr15-std.glb?v=a1', targetOpen: '0.000m 0.073m -0.018m', radius: '0.454m', closed: './images/models/preroll-71_5gr-box-standart-closed.glb?v=056c7e4', open: './images/models/preroll-71_5gr-box-standart-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr15-std.glb?v=a3', targetOpen: '0.000m 0.073m -0.018m', radius: '0.454m', closed: './images/models/preroll-71_5gr-box-standart-closed.glb?v=056c7e4', open: './images/models/preroll-71_5gr-box-standart-open.glb?v=056c7e4' },
     sku: 'BZL-PR-001',
     subcategoryId: 'prerolls-15',
     name: 'אריזה סטנדרטית',
@@ -509,7 +509,7 @@ export const products = [
   // אריזה פתיחה צידית - 7 מגולגלות 1.5 גרם
   {
     id: 'preroll-15-side',
-    model3d: { anim: './images/models/anim-pr15-side.glb?v=a1', targetOpen: '0.025m 0.016m 0.000m', radius: '0.652m', closed: './images/models/preroll-71_5gr-box-side-closed.glb?v=056c7e4', open: './images/models/preroll-71_5gr-box-side-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr15-side.glb?v=a3', targetOpen: '0.025m 0.016m 0.000m', radius: '0.652m', closed: './images/models/preroll-71_5gr-box-side-closed.glb?v=056c7e4', open: './images/models/preroll-71_5gr-box-side-open.glb?v=056c7e4' },
     sku: 'BZL-PR-002',
     subcategoryId: 'prerolls-15',
     name: 'אריזה פתיחה צידית',
@@ -577,7 +577,7 @@ export const products = [
   // אריזה סטנדרטית - 5 מגולגלות 2 גרם
   {
     id: 'preroll-2-standard',
-    model3d: { anim: './images/models/anim-pr2-std.glb?v=a1', targetOpen: '0.000m 0.066m -0.015m', radius: '0.458m', closed: './images/models/preroll-52gr-box-standart-closed.glb?v=056c7e4', open: './images/models/preroll-52gr-box-standart-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr2-std.glb?v=a3', targetOpen: '0.000m 0.066m -0.015m', radius: '0.458m', closed: './images/models/preroll-52gr-box-standart-closed.glb?v=056c7e4', open: './images/models/preroll-52gr-box-standart-open.glb?v=056c7e4' },
     sku: 'BZL-PR-003',
     subcategoryId: 'prerolls-2',
     name: 'אריזה סטנדרטית',
@@ -596,7 +596,7 @@ export const products = [
   // אריזה פתיחה צידית - 5 מגולגלות 2 גרם
   {
     id: 'preroll-2-side',
-    model3d: { anim: './images/models/anim-pr2-side.glb?v=a1', targetOpen: '0.036m 0.016m 0.000m', radius: '0.582m', closed: './images/models/preroll-52gr-box-side-closed.glb?v=056c7e4', open: './images/models/preroll-52gr-box-side-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr2-side.glb?v=a3', targetOpen: '0.036m 0.016m 0.000m', radius: '0.582m', closed: './images/models/preroll-52gr-box-side-closed.glb?v=056c7e4', open: './images/models/preroll-52gr-box-side-open.glb?v=056c7e4' },
     sku: 'BZL-PR-004',
     subcategoryId: 'prerolls-2',
     name: 'אריזה פתיחה צידית',
