@@ -527,7 +527,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-tube-closed-legacy.png' }
+    images: { primary: './images/products/preroll-tube-15.png' }
   },
 
   // קופסא לתרמיל בודד - מגולגלת 1.5 גרם
@@ -542,7 +542,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-tube-box.png' }
+    images: { primary: './images/products/preroll-tube-box-15.png' }
   },
 
   // קונוס 1.5 גרם
@@ -557,7 +557,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/1.5-2-preroll-cone.png' }
+    images: { primary: './images/products/1.5-preroll-cone.png' }
   },
 
   // =============================================================
@@ -612,7 +612,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-tube-closed-legacy.png' }
+    images: { primary: './images/products/preroll-tube-2.png' }
   },
 
   // קופסא לתרמיל בודד - מגולגלת 2 גרם
@@ -627,7 +627,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/preroll-tube-box.png' }
+    images: { primary: './images/products/preroll-tube-box-2.png' }
   },
 
   // קונוס 2 גרם
@@ -642,7 +642,7 @@ export const products = [
     hasToggle: false,
     isInternal: true,
     gallery: null,
-    images: { primary: './images/products/1.5-2-preroll-cone.png' }
+    images: { primary: './images/products/2-preroll-cone.png' }
   },
 
   // =============================================================

@@ -5,7 +5,7 @@
 // כדי להחליף תמונה: שימי קובץ חדש בתיקייה images/cards ועדכני את השם כאן
 // =============================================================
 // studio: true = image comes from the 3D studio (has its own shadow)
-const old3d = new Set(['prerolls-025', 'prerolls-15', 'prerolls-2']);
+const old3d = new Set([]);
 const card = (id, opts = {}) => ({
   base: `./images/cards/${id}.webp`,
   hover: `./images/cards/${id}-hover.webp`,
