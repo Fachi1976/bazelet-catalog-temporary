@@ -160,7 +160,7 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen, noOpen }) {
         shadow-softness="0.6"
         exposure="1.0"
         tone-mapping="neutral"
-        environment-image="./images/models/studio-env.hdr?v=2"
+        environment-image="./images/models/studio-env-2.hdr"
         onPointerDown={onDown}
         onPointerUp={onUp}
         style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent', cursor: noOpen ? 'grab' : 'pointer' }}
