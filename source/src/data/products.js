@@ -384,7 +384,7 @@ export const products = [
   // אריזת מתנה (קופסת מתנה → אריזת מתנה)
   {
     id: 'preroll-slims-gift',
-    model3d: { anim: './images/models/anim-slims-gift.glb?v=a1', targetOpen: '0.000m 0.074m -0.001m', radius: '0.515m', closed: './images/models/preroll-slims-gift-closed.glb?v=056c7e4', open: './images/models/preroll-slims-gift-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-slims-gift.glb?v=a2', targetOpen: '0.000m 0.074m -0.001m', radius: '0.515m', closed: './images/models/preroll-slims-gift-closed.glb?v=056c7e4', open: './images/models/preroll-slims-gift-open.glb?v=056c7e4' },
     sku: 'BZL-PS-002',
     subcategoryId: 'prerolls-05',
     name: 'אריזת מתנה',
