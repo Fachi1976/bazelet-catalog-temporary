@@ -96,42 +96,6 @@ function ImageGallery({ images, alt }) {
 // 3D MODEL VIEWER (drag to rotate, scroll/pinch to zoom)
 // =====================================================
 let mvLoad = null;
-function ModelView({ src, alt, poster, radius }) {
-  const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
-  useEffect(() => {
-    if (ready) return;
-    mvLoad = mvLoad || import('@google/model-viewer');
-    mvLoad.then(() => setReady(true));
-  }, [ready]);
-  if (!ready) return <div className="gallery"><div className="gallery-stage"><img src={poster || PLACEHOLDER} alt={alt} /></div></div>;
-  return (
-    <div className="gallery model">
-      <model-viewer
-        key={src}
-        src={src}
-        alt={alt}
-        poster={poster}
-        camera-controls=""
-        touch-action="pan-y"
-        auto-rotate=""
-        auto-rotate-delay="2500"
-        rotation-per-second="18deg"
-        interaction-prompt="none"
-        camera-orbit={`35deg 65deg ${radius || "115%"}`}
-        min-camera-orbit="auto auto 50%"
-        max-camera-orbit="auto auto 160%"
-        shadow-intensity="1"
-        shadow-softness="0.9"
-        exposure="1.0"
-        tone-mapping="neutral"
-        environment-image="./images/models/studio-env.hdr"
-        style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent' }}
-      ></model-viewer>
-      <div className="model-hint">גררו כדי לסובב · גלגלו להגדלה</div>
-    </div>
-  );
-}
-
 // Animated box: click/tap the box (or the button) to open/close it while rotating
 function AnimatedModel({ src, alt, poster, radius, targetOpen }) {
   const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
@@ -387,7 +351,7 @@ export default function App() {
         <main className="wrap page">
           <div className="detail">
             <div className={`detail-media ${darkBg ? 'dark' : ''}`}>
-              {p.gallery ? (
+              {(p.gallery || p.model3d) ? (
                 <>
                   {p.hasToggle && !p.model3d?.anim && (
                     <div className="toggle">
@@ -398,9 +362,6 @@ export default function App() {
                   {p.model3d?.anim ? (
                     <AnimatedModel radius={p.model3d.radius} src={p.model3d.anim} targetOpen={p.model3d.targetOpen}
                       alt={p.name} poster={p.images?.primary} />
-                  ) : p.model3d ? (
-                    <ModelView radius={p.model3d.radius} src={p.model3d[viewState] || p.model3d.closed} alt={p.name}
-                      poster={viewState === 'open' ? p.images?.open : p.images?.primary} />
                   ) : (
                     <ImageGallery images={images} alt={p.name} />
                   )}

@@ -1,11 +1,5 @@
 // Bazelet Catalog - Complete Products Data - UPDATED
 
-const generateGallery = (folderName, count) => {
-  return Array.from({ length: count }, (_, i) => {
-    const num = String(i + 1).padStart(2, '0');
-    return `./images/360/${folderName}/${folderName}-${num}.png`;
-  });
-};
 
 export const mainCategories = [
   {
@@ -137,7 +131,7 @@ export const products = [
   // אריזה סטנדרטית (קופסא סטנדרטית → אריזה סטנדרטית)
   {
     id: 'flower-standard',
-    model3d: { anim: './images/models/anim-flower-standard.glb?v=a1', targetOpen: '0.000m 0.138m -0.006m', radius: '0.702m', closed: './images/models/flower-box-standard-closed.glb?v=056c7e4', open: './images/models/flower-box-standard-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-flower-standard.glb?v=b1', targetOpen: '0.000m 0.138m -0.006m', radius: '0.702m' },
     sku: 'BZL-FL-001',
     subcategoryId: 'flowers-regular',
     name: 'אריזה סטנדרטית',
@@ -146,10 +140,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('flower-standard-closed', 6),
-      open: generateGallery('flower-standard-open', 6)
-    },
     images: { primary: './images/products/flower-box-standard-closed.png' }
   },
 
@@ -175,7 +165,7 @@ export const products = [
   // אריזת מתנה (קופסת מתנה → אריזת מתנה, SKU BZL-FL-003→002)
   {
     id: 'flower-gift',
-    model3d: { anim: './images/models/anim-flower-gift.glb?v=a1', targetOpen: '0.000m 0.101m -0.023m', radius: '0.781m', closed: './images/models/flower-box-premium-closed.glb?v=056c7e4', open: './images/models/flower-box-premium-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-flower-gift.glb?v=b1', targetOpen: '0.000m 0.101m -0.023m', radius: '0.781m' },
     sku: 'BZL-FL-002',
     subcategoryId: 'flowers-regular',
     name: 'אריזת מתנה',
@@ -184,10 +174,6 @@ export const products = [
     tags: ['IMC-GMP', 'premium'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('flower-gift-closed', 7),
-      open: generateGallery('flower-gift-open', 6)
-    },
     images: { primary: './images/products/flower-box-premium-closed.png' }
   },
 
@@ -213,7 +199,7 @@ export const products = [
   // אריזה מוקטנת לשקית DOY (קופסא ממיניז → הועבר לתפרחות, SKU BZL-MN-001→BZL-FL-004)
   {
     id: 'flower-small-box',
-    model3d: { anim: './images/models/anim-doy-box.glb?v=a1', targetOpen: '0.000m 0.119m -0.007m', radius: '0.617m', closed: './images/models/minis-pouch-box-closed.glb?v=056c7e4', open: './images/models/minis-pouch-box-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-doy-box.glb?v=b1', targetOpen: '0.000m 0.119m -0.007m', radius: '0.617m' },
     sku: 'BZL-FL-004',
     subcategoryId: 'flowers-regular',
     name: 'אריזה מוקטנת לשקית DOY',
@@ -222,10 +208,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('minis-box-bag-closed', 8),
-      open: generateGallery('minis-box-bag-open', 9)
-    },
     images: { primary: './images/products/minis-pouch-box-closed.png' }
   },
 
@@ -247,7 +229,7 @@ export const products = [
   // אריזת מתנה מוקטנת לשקית DOY (BZL-FL-006)
   {
     id: 'flower-small-gift',
-    model3d: { anim: './images/models/anim-doy-gift.glb?v=a1', targetOpen: '0.000m 0.091m -0.021m', radius: '0.706m', closed: './images/models/flower-box-downsized-premium-closed.glb?v=056c7e4', open: './images/models/flower-box-downsized-premium-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-doy-gift.glb?v=b1', targetOpen: '0.000m 0.091m -0.021m', radius: '0.706m' },
     sku: 'BZL-FL-006',
     subcategoryId: 'flowers-regular',
     name: 'אריזת מתנה מוקטנת לשקית DOY',
@@ -256,10 +238,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('flower-box-downsized-premium-closed', 7),
-      open: generateGallery('flower-box-downsized-premium-open', 6)
-    },
     images: { primary: './images/products/flower-box-downsized-premium-closed.png' }
   },
 
@@ -270,7 +248,7 @@ export const products = [
   // אריזה (קופסא → אריזה, with מיכל inside)
   {
     id: 'minis-box-container',
-    model3d: { anim: './images/models/anim-minis-box.glb?v=a1', targetOpen: '0.000m 0.075m -0.008m', radius: '0.410m', closed: './images/models/minis-container-box-closed.glb?v=056c7e4', open: './images/models/minis-container-box-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-minis-box.glb?v=b1', targetOpen: '0.000m 0.075m -0.008m', radius: '0.410m' },
     sku: 'BZL-MN-001',
     subcategoryId: 'flowers-minis',
     name: 'קופסא למיכל',
@@ -279,10 +257,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('minis-box-container-closed', 5),
-      open: generateGallery('minis-box-container-open', 6)
-    },
     images: { primary: './images/products/minis-container-box-closed.png' }
   },
 
@@ -365,7 +339,7 @@ export const products = [
   // אריזה סטנדרטית (קופסא סטנדרטית → אריזה סטנדרטית)
   {
     id: 'preroll-slims-standard',
-    model3d: { anim: './images/models/anim-slims-std.glb?v=a1', targetOpen: '0.000m 0.085m -0.007m', radius: '0.456m', closed: './images/models/preroll-slims-closed.glb?v=056c7e4', open: './images/models/preroll-slims-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-slims-std.glb?v=b1', targetOpen: '0.000m 0.085m -0.007m', radius: '0.456m' },
     sku: 'BZL-PS-001',
     subcategoryId: 'prerolls-05',
     name: 'אריזה סטנדרטית',
@@ -374,17 +348,13 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-slims-standard-closed', 8),
-      open: generateGallery('preroll-slims-standard-open', 8)
-    },
     images: { primary: './images/products/preroll-slims-closed.png' }
   },
 
   // אריזת מתנה (קופסת מתנה → אריזת מתנה)
   {
     id: 'preroll-slims-gift',
-    model3d: { anim: './images/models/anim-slims-gift.glb?v=a2', targetOpen: '0.000m 0.074m -0.001m', radius: '0.515m', closed: './images/models/preroll-slims-gift-closed.glb?v=056c7e4', open: './images/models/preroll-slims-gift-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-slims-gift.glb?v=b1', targetOpen: '0.000m 0.074m -0.001m', radius: '0.515m' },
     sku: 'BZL-PS-002',
     subcategoryId: 'prerolls-05',
     name: 'אריזת מתנה',
@@ -393,10 +363,6 @@ export const products = [
     tags: ['IMC-GMP', 'premium'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-slims-gift-closed', 6),
-      open: generateGallery('preroll-slims-gift-open', 6)
-    },
     images: { primary: './images/products/preroll-slims-gift-closed.png' }
   },
 
@@ -437,7 +403,7 @@ export const products = [
   // אריזה (קופסא + מגירה → אריזה)
   {
     id: 'preroll-shorts-box',
-    model3d: { anim: './images/models/anim-shorts.glb?v=a3', targetOpen: '0.026m 0.024m 0m', radius: '0.427m', closed: './images/models/preroll-shorts-closed.glb?v=056c7e4', open: './images/models/preroll-shorts-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-shorts.glb?v=b1', targetOpen: '0.026m 0.024m 0m', radius: '0.427m' },
     sku: 'BZL-PH-001',
     subcategoryId: 'prerolls-025',
     name: 'אריזה',
@@ -446,10 +412,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-shorts-box-closed', 9),
-      open: generateGallery('preroll-shorts-box-open', 8)
-    },
     images: { primary: './images/products/preroll-shorts-closed.png' }
   },
 
@@ -490,7 +452,7 @@ export const products = [
   // אריזה סטנדרטית - 7 מגולגלות 1.5 גרם
   {
     id: 'preroll-15-standard',
-    model3d: { anim: './images/models/anim-pr15-std.glb?v=a3', targetOpen: '0.000m 0.073m -0.018m', radius: '0.454m', closed: './images/models/preroll-71_5gr-box-standart-closed.glb?v=056c7e4', open: './images/models/preroll-71_5gr-box-standart-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr15-std.glb?v=b1', targetOpen: '0.000m 0.073m -0.018m', radius: '0.454m' },
     sku: 'BZL-PR-001',
     subcategoryId: 'prerolls-15',
     name: 'אריזה סטנדרטית',
@@ -499,17 +461,13 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-(7)1.5gr-box-standart-closed', 6),
-      open: generateGallery('preroll-(7)1.5gr-box-standart-open', 6)
-    },
     images: { primary: './images/products/preroll-(7)1.5gr-box-standart-closed.png' }
   },
 
   // אריזה פתיחה צידית - 7 מגולגלות 1.5 גרם
   {
     id: 'preroll-15-side',
-    model3d: { anim: './images/models/anim-pr15-side.glb?v=a3', targetOpen: '0.025m 0.016m 0.000m', radius: '0.652m', closed: './images/models/preroll-71_5gr-box-side-closed.glb?v=056c7e4', open: './images/models/preroll-71_5gr-box-side-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr15-side.glb?v=b1', targetOpen: '0.025m 0.016m 0.000m', radius: '0.652m' },
     sku: 'BZL-PR-002',
     subcategoryId: 'prerolls-15',
     name: 'אריזה פתיחה צידית',
@@ -518,10 +476,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-(7)1.5gr-box-side-closed', 7),
-      open: generateGallery('preroll-(7)1.5gr-box-side-open', 7)
-    },
     images: { primary: './images/products/preroll-(7)1.5gr-box-side-closed.png' }
   },
 
@@ -577,7 +531,7 @@ export const products = [
   // אריזה סטנדרטית - 5 מגולגלות 2 גרם
   {
     id: 'preroll-2-standard',
-    model3d: { anim: './images/models/anim-pr2-std.glb?v=a3', targetOpen: '0.000m 0.066m -0.015m', radius: '0.458m', closed: './images/models/preroll-52gr-box-standart-closed.glb?v=056c7e4', open: './images/models/preroll-52gr-box-standart-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr2-std.glb?v=b1', targetOpen: '0.000m 0.066m -0.015m', radius: '0.458m' },
     sku: 'BZL-PR-003',
     subcategoryId: 'prerolls-2',
     name: 'אריזה סטנדרטית',
@@ -586,17 +540,13 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-(5)2gr-box-standart-closed', 6),
-      open: generateGallery('preroll-(5)2gr-box-standart-open', 6)
-    },
     images: { primary: './images/products/preroll-(5)2gr-box-standart-closed.png' }
   },
 
   // אריזה פתיחה צידית - 5 מגולגלות 2 גרם
   {
     id: 'preroll-2-side',
-    model3d: { anim: './images/models/anim-pr2-side.glb?v=a3', targetOpen: '0.036m 0.016m 0.000m', radius: '0.582m', closed: './images/models/preroll-52gr-box-side-closed.glb?v=056c7e4', open: './images/models/preroll-52gr-box-side-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-pr2-side.glb?v=b1', targetOpen: '0.036m 0.016m 0.000m', radius: '0.582m' },
     sku: 'BZL-PR-004',
     subcategoryId: 'prerolls-2',
     name: 'אריזה פתיחה צידית',
@@ -605,10 +555,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('preroll-(5)2gr-box-side-closed', 6),
-      open: generateGallery('preroll-(5)2gr-box-side-open', 6)
-    },
     images: { primary: './images/products/preroll-(5)2gr-box-side-closed.png' }
   },
 
@@ -746,7 +692,7 @@ export const products = [
   },
   {
     id: 'combo-preroll-flower-box',
-    model3d: { anim: './images/models/anim-horizontal-mix.glb?v=a1', targetOpen: '0.025m 0.037m 0.000m', radius: '0.568m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-preroll-flower-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-horizontal-mix.glb?v=b1', targetOpen: '0.025m 0.037m 0.000m', radius: '0.568m' },
     sku: 'BZL-CB-001',
     subcategoryId: 'combo-preroll-flower',
     name: 'אריזה',
@@ -755,10 +701,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-preroll-flower-box-closed', 6),
-      open: generateGallery('combo-preroll-flower-box-open', 7)
-    },
     images: { primary: './images/products/combo-preroll-flower-closed.png' }
   },
 
@@ -812,7 +754,7 @@ export const products = [
 
   {
     id: 'combo-preroll-oil-box',
-    model3d: { anim: './images/models/anim-oilcombo.glb?v=a1', targetOpen: '0.000m 0.068m -0.007m', radius: '0.422m', closed: './images/models/combo-preroll-oil-closed.glb?v=056c7e4', open: './images/models/combo-preroll-oil-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-oilcombo.glb?v=b1', targetOpen: '0.000m 0.068m -0.007m', radius: '0.422m' },
     sku: 'BZL-CB-PO-001',
     subcategoryId: 'combo-preroll-oil',
     name: 'מארז',
@@ -821,10 +763,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-preroll-oil-box-closed', 8),
-      open: generateGallery('combo-preroll-oil-box-open', 8)
-    },
     images: { primary: './images/products/combo-preroll-oil-open.png' }
   },
 
@@ -857,18 +795,14 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-flower-minis-horizontal-closed', 6),
-      open: generateGallery('combo-flower-minis-horizontal-open', 5)
-    },
-    model3d: { anim: './images/models/anim-horizontal.glb?v=a1', targetOpen: '0.025m 0.037m 0m', radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-horizontal-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-horizontal.glb?v=b1', targetOpen: '0.025m 0.037m 0m', radius: '0.52m' },
     images: { primary: './images/products/combo-dual-flower-horizontal-closed.png', open: './images/products/combo-dual-flower-horizontal-open.png' }
   },
 
   // קופסא אנכית → אריזה אנכית
   {
     id: 'combo-flower-minis-vertical',
-    model3d: { anim: './images/models/anim-vertical.glb?v=a1', targetOpen: '0.000m 0.091m -0.016m', radius: '0.532m', closed: './images/models/combo-dual-flower-vertical-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-vertical-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-vertical.glb?v=b1', targetOpen: '0.000m 0.091m -0.016m', radius: '0.532m' },
     sku: 'BZL-CB-002',
     subcategoryId: 'combo-flower-minis',
     name: 'קופסא אנכית',
@@ -877,10 +811,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-flower-minis-vertical-closed', 5),
-      open: generateGallery('combo-flower-minis-vertical-open', 6)
-    },
     images: { primary: './images/products/combo-dual-flower-vertical-closed.png' }
   },
 
@@ -905,7 +835,7 @@ export const products = [
   // קופסא אופקית → אריזה אופקית
   {
     id: 'combo-sativa-indica-horizontal',
-    model3d: { anim: './images/models/anim-horizontal.glb?v=a1', targetOpen: '0.025m 0.037m 0m', radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-horizontal-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-horizontal.glb?v=b1', targetOpen: '0.025m 0.037m 0m', radius: '0.52m' },
     sku: 'BZL-CB-001',
     subcategoryId: 'combo-sativa-indica',
     name: 'קופסא אופקית',
@@ -914,17 +844,13 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-sativa-indica-horizontal-closed', 6),
-      open: generateGallery('combo-sativa-indica-horizontal-open', 5)
-    },
     images: { primary: './images/products/combo-sativa-indica-horizontal-closed.png' }
   },
 
   // קופסא אנכית → אריזה אנכית
   {
     id: 'combo-sativa-indica-vertical',
-    model3d: { anim: './images/models/anim-vertical.glb?v=a1', targetOpen: '0.000m 0.091m -0.016m', radius: '0.532m', closed: './images/models/combo-dual-flower-vertical-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-vertical-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-vertical.glb?v=b1', targetOpen: '0.000m 0.091m -0.016m', radius: '0.532m' },
     sku: 'BZL-CB-002',
     subcategoryId: 'combo-sativa-indica',
     name: 'קופסא אנכית',
@@ -933,10 +859,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-sativa-indica-vertical-closed', 5),
-      open: generateGallery('combo-sativa-indica-vertical-open', 6)
-    },
     images: { primary: './images/products/combo-sativa-indica-vertical-closed.png' }
   },
 
@@ -989,7 +911,7 @@ export const products = [
 
   {
     id: 'combo-flower-oil-box',
-    model3d: { anim: './images/models/anim-oilcombo.glb?v=a1', targetOpen: '0.000m 0.068m -0.007m', radius: '0.422m', closed: './images/models/combo-preroll-oil-closed.glb?v=056c7e4', open: './images/models/combo-preroll-oil-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-oilcombo.glb?v=b1', targetOpen: '0.000m 0.068m -0.007m', radius: '0.422m' },
     sku: 'BZL-CB-PO-001',
     subcategoryId: 'combo-flower-oil',
     name: 'מארז',
@@ -998,10 +920,6 @@ export const products = [
     tags: ['IMC-GMP'],
     hasToggle: true,
     isInternal: false,
-    gallery: {
-      closed: generateGallery('combo-preroll-oil-box-closed', 8),
-      open: generateGallery('combo-preroll-oil-box-open', 8)
-    },
     images: { primary: './images/products/combo-preroll-oil-open.png' }
   }
 ];
