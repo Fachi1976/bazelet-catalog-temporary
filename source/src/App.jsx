@@ -157,7 +157,7 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen }) {
         min-camera-orbit="auto auto 50%"
         max-camera-orbit="auto auto 160%"
         shadow-intensity="1"
-        shadow-softness="0.9"
+        shadow-softness="0.6"
         exposure="1.0"
         tone-mapping="neutral"
         environment-image="./images/models/studio-env.hdr"
