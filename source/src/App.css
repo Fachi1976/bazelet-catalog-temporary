@@ -170,3 +170,13 @@ a { cursor: pointer; }
 .gallery.model { position: relative; }
 .gallery.model model-viewer { min-height: 420px; aspect-ratio: 1 / 1; display: block; }
 .model-hint { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-size: 12px; color: #6b7a8c; pointer-events: none; }
+
+/* open/close button for animated 3D boxes */
+.gallery.model { position: relative; }
+.open-btn {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  background: #0f2a3f; color: #fff; border: 0; border-radius: 8px;
+  padding: 9px 20px; font: inherit; font-weight: 600; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 42, 63, .18); transition: background .2s;
+}
+.open-btn:hover { background: #8dc63f; color: #0f2a3f; }

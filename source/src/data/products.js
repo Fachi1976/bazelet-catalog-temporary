@@ -437,7 +437,7 @@ export const products = [
   // אריזה (קופסא + מגירה → אריזה)
   {
     id: 'preroll-shorts-box',
-    model3d: { radius: '0.427m', closed: './images/models/preroll-shorts-closed.glb?v=056c7e4', open: './images/models/preroll-shorts-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-shorts.glb?v=a1', targetOpen: '0.026m 0.024m 0m', radius: '0.427m', closed: './images/models/preroll-shorts-closed.glb?v=056c7e4', open: './images/models/preroll-shorts-open.glb?v=056c7e4' },
     sku: 'BZL-PH-001',
     subcategoryId: 'prerolls-025',
     name: 'אריזה',
@@ -861,7 +861,7 @@ export const products = [
       closed: generateGallery('combo-flower-minis-horizontal-closed', 6),
       open: generateGallery('combo-flower-minis-horizontal-open', 5)
     },
-    model3d: { radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-horizontal-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-horizontal.glb?v=a1', targetOpen: '0.025m 0.037m 0m', radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-horizontal-open.glb?v=056c7e4' },
     images: { primary: './images/products/combo-dual-flower-horizontal-closed.png', open: './images/products/combo-dual-flower-horizontal-open.png' }
   },
 
@@ -905,7 +905,7 @@ export const products = [
   // קופסא אופקית → אריזה אופקית
   {
     id: 'combo-sativa-indica-horizontal',
-    model3d: { radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-horizontal-open.glb?v=056c7e4' },
+    model3d: { anim: './images/models/anim-horizontal.glb?v=a1', targetOpen: '0.025m 0.037m 0m', radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb?v=056c7e4', open: './images/models/combo-dual-flower-horizontal-open.glb?v=056c7e4' },
     sku: 'BZL-CB-001',
     subcategoryId: 'combo-sativa-indica',
     name: 'קופסא אופקית',

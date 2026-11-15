@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   mainCategories, getMainCategory, getSubcategory, getSubcategoriesByParent,
   getProductsBySubcategory, getProduct, countByMain,
@@ -128,6 +128,80 @@ function ModelView({ src, alt, poster, radius }) {
         style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent' }}
       ></model-viewer>
       <div className="model-hint">גררו כדי לסובב · גלגלו להגדלה</div>
+    </div>
+  );
+}
+
+// Animated box: click/tap the box (or the button) to open/close it while rotating
+function AnimatedModel({ src, alt, poster, radius, targetOpen }) {
+  const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const anim = useRef({ raf: 0, t: 0 });
+  const down = useRef(null);
+  useEffect(() => {
+    if (ready) return;
+    mvLoad = mvLoad || import('@google/model-viewer');
+    mvLoad.then(() => setReady(true));
+  }, [ready]);
+  useEffect(() => {
+    const v = ref.current; if (!v) return;
+    const onLoad = () => { v.play(); v.pause(); v.currentTime = 0; anim.current.t = 0; };
+    v.addEventListener('load', onLoad);
+    return () => { v.removeEventListener('load', onLoad); cancelAnimationFrame(anim.current.raf); };
+  }, [ready, src]);
+  const toggle = () => {
+    const v = ref.current; if (!v || !v.loaded) return;
+    const next = !open; setOpen(next);
+    const dur = Math.max(0.01, (v.duration || 2) - 0.001);
+    const from = anim.current.t, to = next ? dur : 0;
+    v.cameraTarget = next && targetOpen ? targetOpen : 'auto auto auto';
+    cancelAnimationFrame(anim.current.raf);
+    const t0 = performance.now(), len = Math.abs(to - from) * 1000;
+    const step = (now) => {
+      const k = len ? Math.min(1, (now - t0) / len) : 1;
+      const t = from + (to - from) * k;
+      v.play(); v.pause(); v.currentTime = t; anim.current.t = t;
+      if (k < 1) anim.current.raf = requestAnimationFrame(step);
+    };
+    anim.current.raf = requestAnimationFrame(step);
+  };
+  const onDown = (e) => { down.current = { x: e.clientX, y: e.clientY, t: Date.now() }; };
+  const onUp = (e) => {
+    const d = down.current; down.current = null;
+    if (d && Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6 && Date.now() - d.t < 500) toggle();
+  };
+  if (!ready) return <div className="gallery"><div className="gallery-stage"><img src={poster || PLACEHOLDER} alt={alt} /></div></div>;
+  return (
+    <div className="gallery model">
+      <button className="open-btn" onClick={toggle}>{open ? 'סגירה' : 'פתיחה'}</button>
+      <model-viewer
+        ref={ref}
+        key={src}
+        src={src}
+        alt={alt}
+        poster={poster}
+        animation-name="Animation"
+        camera-controls=""
+        touch-action="pan-y"
+        auto-rotate=""
+        auto-rotate-delay="2500"
+        rotation-per-second="18deg"
+        interaction-prompt="none"
+        interpolation-decay="120"
+        camera-orbit={`35deg 65deg ${radius || "115%"}`}
+        min-camera-orbit="auto auto 50%"
+        max-camera-orbit="auto auto 160%"
+        shadow-intensity="1"
+        shadow-softness="0.9"
+        exposure="1.0"
+        tone-mapping="neutral"
+        environment-image="./images/models/studio-env.hdr"
+        onPointerDown={onDown}
+        onPointerUp={onUp}
+        style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent', cursor: 'pointer' }}
+      ></model-viewer>
+      <div className="model-hint">לחצו על האריזה כדי לפתוח · גררו כדי לסובב</div>
     </div>
   );
 }
@@ -315,13 +389,16 @@ export default function App() {
             <div className={`detail-media ${darkBg ? 'dark' : ''}`}>
               {p.gallery ? (
                 <>
-                  {p.hasToggle && (
+                  {p.hasToggle && !p.model3d?.anim && (
                     <div className="toggle">
                       <button className={viewState === 'closed' ? 'on' : ''} onClick={() => setViewState('closed')}>סגור</button>
                       <button className={viewState === 'open' ? 'on' : ''} onClick={() => setViewState('open')}>פתוח</button>
                     </div>
                   )}
-                  {p.model3d ? (
+                  {p.model3d?.anim ? (
+                    <AnimatedModel radius={p.model3d.radius} src={p.model3d.anim} targetOpen={p.model3d.targetOpen}
+                      alt={p.name} poster={p.images?.primary} />
+                  ) : p.model3d ? (
                     <ModelView radius={p.model3d.radius} src={p.model3d[viewState] || p.model3d.closed} alt={p.name}
                       poster={viewState === 'open' ? p.images?.open : p.images?.primary} />
                   ) : (
