@@ -165,3 +165,8 @@ a { cursor: pointer; }
   .card-count { font-size: 11px; padding: 2px 6px; }
   .foot-in { flex-direction: column; align-items: flex-start; }
 }
+
+/* 3D model viewer */
+.gallery.model { position: relative; }
+.gallery.model model-viewer { min-height: 420px; aspect-ratio: 1 / 1; display: block; }
+.model-hint { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-size: 12px; color: #6b7a8c; pointer-events: none; }

@@ -93,6 +93,43 @@ function ImageGallery({ images, alt }) {
 }
 
 // =====================================================
+// 3D MODEL VIEWER (drag to rotate, scroll/pinch to zoom)
+// =====================================================
+let mvLoad = null;
+function ModelView({ src, alt, poster }) {
+  const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
+  useEffect(() => {
+    if (ready) return;
+    mvLoad = mvLoad || import('@google/model-viewer');
+    mvLoad.then(() => setReady(true));
+  }, [ready]);
+  if (!ready) return <div className="gallery"><div className="gallery-stage"><img src={poster || PLACEHOLDER} alt={alt} /></div></div>;
+  return (
+    <div className="gallery model">
+      <model-viewer
+        key={src}
+        src={src}
+        alt={alt}
+        poster={poster}
+        camera-controls=""
+        touch-action="pan-y"
+        auto-rotate=""
+        auto-rotate-delay="2500"
+        rotation-per-second="18deg"
+        interaction-prompt="none"
+        camera-orbit="35deg 65deg 115%"
+        shadow-intensity="0.8"
+        shadow-softness="0.9"
+        exposure="1.05"
+        environment-image="neutral"
+        style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent' }}
+      ></model-viewer>
+      <div className="model-hint">גררו כדי לסובב · גלגלו להגדלה</div>
+    </div>
+  );
+}
+
+// =====================================================
 // CARDS
 // =====================================================
 function CategoryCard({ index, item, count, onClick }) {
@@ -281,7 +318,12 @@ export default function App() {
                       <button className={viewState === 'open' ? 'on' : ''} onClick={() => setViewState('open')}>פתוח</button>
                     </div>
                   )}
-                  <ImageGallery images={images} alt={p.name} />
+                  {p.model3d ? (
+                    <ModelView src={p.model3d[viewState] || p.model3d.closed} alt={p.name}
+                      poster={viewState === 'open' ? p.images?.open : p.images?.primary} />
+                  ) : (
+                    <ImageGallery images={images} alt={p.name} />
+                  )}
                 </>
               ) : (
                 <div className="gallery"><div className="gallery-stage">

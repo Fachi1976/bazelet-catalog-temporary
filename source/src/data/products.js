@@ -847,7 +847,8 @@ export const products = [
       closed: generateGallery('combo-flower-minis-horizontal-closed', 6),
       open: generateGallery('combo-flower-minis-horizontal-open', 5)
     },
-    images: { primary: './images/products/combo-dual-flower-horizontal-closed.png' }
+    model3d: { closed: './images/models/combo-dual-flower-horizontal-closed.glb', open: './images/models/combo-dual-flower-horizontal-open.glb' },
+    images: { primary: './images/products/combo-dual-flower-horizontal-closed.png', open: './images/products/combo-dual-flower-horizontal-open.png' }
   },
 
   // קופסא אנכית → אריזה אנכית
