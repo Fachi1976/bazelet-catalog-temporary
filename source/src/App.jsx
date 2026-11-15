@@ -118,10 +118,11 @@ function ModelView({ src, alt, poster }) {
         rotation-per-second="18deg"
         interaction-prompt="none"
         camera-orbit="35deg 65deg 115%"
-        shadow-intensity="0.8"
+        shadow-intensity="1"
         shadow-softness="0.9"
-        exposure="1.05"
-        environment-image="neutral"
+        exposure="1.0"
+        tone-mapping="neutral"
+        environment-image="./images/models/studio-env.hdr"
         style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent' }}
       ></model-viewer>
       <div className="model-hint">גררו כדי לסובב · גלגלו להגדלה</div>
