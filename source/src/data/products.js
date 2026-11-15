@@ -847,7 +847,7 @@ export const products = [
       closed: generateGallery('combo-flower-minis-horizontal-closed', 6),
       open: generateGallery('combo-flower-minis-horizontal-open', 5)
     },
-    model3d: { closed: './images/models/combo-dual-flower-horizontal-closed.glb', open: './images/models/combo-dual-flower-horizontal-open.glb' },
+    model3d: { radius: '0.52m', closed: './images/models/combo-dual-flower-horizontal-closed.glb', open: './images/models/combo-dual-flower-horizontal-open.glb' },
     images: { primary: './images/products/combo-dual-flower-horizontal-closed.png', open: './images/products/combo-dual-flower-horizontal-open.png' }
   },
 

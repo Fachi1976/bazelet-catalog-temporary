@@ -96,7 +96,7 @@ function ImageGallery({ images, alt }) {
 // 3D MODEL VIEWER (drag to rotate, scroll/pinch to zoom)
 // =====================================================
 let mvLoad = null;
-function ModelView({ src, alt, poster }) {
+function ModelView({ src, alt, poster, radius }) {
   const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
   useEffect(() => {
     if (ready) return;
@@ -117,7 +117,9 @@ function ModelView({ src, alt, poster }) {
         auto-rotate-delay="2500"
         rotation-per-second="18deg"
         interaction-prompt="none"
-        camera-orbit="35deg 65deg 115%"
+        camera-orbit={`35deg 65deg ${radius || "115%"}`}
+        min-camera-orbit="auto auto 50%"
+        max-camera-orbit="auto auto 160%"
         shadow-intensity="1"
         shadow-softness="0.9"
         exposure="1.0"
@@ -320,7 +322,7 @@ export default function App() {
                     </div>
                   )}
                   {p.model3d ? (
-                    <ModelView src={p.model3d[viewState] || p.model3d.closed} alt={p.name}
+                    <ModelView radius={p.model3d.radius} src={p.model3d[viewState] || p.model3d.closed} alt={p.name}
                       poster={viewState === 'open' ? p.images?.open : p.images?.primary} />
                   ) : (
                     <ImageGallery images={images} alt={p.name} />
