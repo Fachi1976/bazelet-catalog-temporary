@@ -96,27 +96,51 @@ function ImageGallery({ images, alt }) {
 // 3D MODEL VIEWER (drag to rotate, scroll/pinch to zoom)
 // =====================================================
 let mvLoad = null;
+const ENV_HDR = './images/models/studio-env-3.hdr';
+const MESHOPT = './images/models/meshopt_decoder.js';
+function loadMV() {
+  mvLoad = mvLoad || import('@google/model-viewer').then((m) => {
+    const MV = customElements.get('model-viewer');
+    if (MV) MV.meshoptDecoderLocation = MESHOPT;
+    return m;
+  });
+  return mvLoad;
+}
+// Warm up the 3D engine + studio lighting in the background, so the first product opens fast
+if (typeof window !== 'undefined') {
+  const warm = () => { loadMV(); fetch(ENV_HDR).catch(() => {}); };
+  (window.requestIdleCallback || ((f) => setTimeout(f, 1500)))(warm);
+}
 // Animated box: click/tap the box (or the button) to open/close it while rotating
 function AnimatedModel({ src, alt, poster, radius, targetOpen, noOpen }) {
   const [ready, setReady] = useState(!!(typeof customElements !== 'undefined' && customElements.get('model-viewer')));
   const [open, setOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const pending = useRef(false);
   const ref = useRef(null);
   const anim = useRef({ raf: 0, t: 0 });
   const down = useRef(null);
   useEffect(() => {
     if (ready) return;
-    mvLoad = mvLoad || import('@google/model-viewer');
-    mvLoad.then(() => setReady(true));
+    loadMV().then(() => setReady(true));
   }, [ready]);
   useEffect(() => {
     const v = ref.current; if (!v) return;
-    const onLoad = () => { v.play(); v.pause(); v.currentTime = 0; anim.current.t = 0; };
+    setLoaded(!!v.loaded); setProgress(0);
+    const onLoad = () => {
+      v.play(); v.pause(); v.currentTime = 0; anim.current.t = 0; anim.current.dir = false; setLoaded(true);
+      if (pending.current) { pending.current = false; setTimeout(() => toggleRef.current(), 300); }
+    };
+    const onProg = (e) => setProgress(e.detail?.totalProgress || 0);
     v.addEventListener('load', onLoad);
-    return () => { v.removeEventListener('load', onLoad); cancelAnimationFrame(anim.current.raf); };
+    v.addEventListener('progress', onProg);
+    return () => { v.removeEventListener('load', onLoad); v.removeEventListener('progress', onProg); cancelAnimationFrame(anim.current.raf); };
   }, [ready, src]);
   const toggle = () => {
-    const v = ref.current; if (!v || !v.loaded) return;
-    const next = !open; setOpen(next);
+    const v = ref.current;
+    if (!v || !v.loaded) { pending.current = !pending.current; setOpen(pending.current); return; }
+    const next = !anim.current.dir; anim.current.dir = next; setOpen(next);
     const dur = Math.max(0.01, (v.duration || 2) - 0.001);
     const from = anim.current.t, to = next ? dur : 0;
     v.cameraTarget = next && targetOpen ? targetOpen : 'auto auto auto';
@@ -130,12 +154,17 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen, noOpen }) {
     };
     anim.current.raf = requestAnimationFrame(step);
   };
+  const toggleRef = useRef(toggle); toggleRef.current = toggle;
   const onDown = (e) => { down.current = { x: e.clientX, y: e.clientY, t: Date.now() }; };
   const onUp = (e) => {
     const d = down.current; down.current = null;
     if (!noOpen && d && Math.hypot(e.clientX - d.x, e.clientY - d.y) < 6 && Date.now() - d.t < 500) toggle();
   };
-  if (!ready) return <div className="gallery"><div className="gallery-stage"><img src={poster || PLACEHOLDER} alt={alt} /></div></div>;
+  if (!ready) return (
+    <div className="gallery model"><div className="gallery-stage"><img src={poster || PLACEHOLDER} alt={alt} /></div>
+      <div className="model-loading"><span>טוען תלת מימד…</span><div className="model-bar"><i style={{ width: '8%' }} /></div></div>
+    </div>
+  );
   return (
     <div className="gallery model">
       {!noOpen && <button className="open-btn" onClick={toggle}>{open ? 'סגירה' : 'פתיחה'}</button>}
@@ -160,11 +189,20 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen, noOpen }) {
         shadow-softness="0.6"
         exposure="1.0"
         tone-mapping="neutral"
-        environment-image="./images/models/studio-env-2.hdr"
+        environment-image={ENV_HDR}
+        loading="eager"
+        reveal="auto"
         onPointerDown={onDown}
         onPointerUp={onUp}
         style={{ width: '100%', height: '100%', background: 'transparent', '--poster-color': 'transparent', cursor: noOpen ? 'grab' : 'pointer' }}
-      ></model-viewer>
+      >
+        <div slot="progress-bar" />
+      </model-viewer>
+      {!loaded && (
+        <div className="model-loading"><span>טוען תלת מימד…</span>
+          <div className="model-bar"><i style={{ width: `${Math.round(progress * 100)}%` }} /></div>
+        </div>
+      )}
       <div className="model-hint">{noOpen ? 'גררו כדי לסובב · גלגלו להגדלה' : 'לחצו על האריזה כדי לפתוח · גררו כדי לסובב'}</div>
     </div>
   );
