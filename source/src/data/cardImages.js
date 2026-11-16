@@ -16,10 +16,11 @@ const card = (id, opts = {}) => ({
 
 export const cardImages = {
   // קטגוריות ראשיות
-  flowers: card('flowers'),
-  prerolls: card('prerolls'),
-  oil: card('oil'),
-  combo: card('combo'),
+  // model = תלת מימד שמסתובב ונפתח במעבר עכבר (מחשב בלבד; בטלפון נשארות התמונות)
+  flowers: card('flowers', { model: { src: './images/models/anim-doy-box.glb?v=c2', radius: '0.617m', target: '0.000m 0.119m -0.007m' } }),
+  prerolls: card('prerolls', { model: { src: './images/models/anim-slims-std.glb?v=c2', radius: '0.456m', target: '0.000m 0.085m -0.007m' } }),
+  oil: card('oil', { model: { src: './images/models/anim-oil-box.glb?v=c2', radius: '0.272m', target: '0m 0.057m 0m' } }),
+  combo: card('combo', { model: { src: './images/models/anim-horizontal.glb?v=c2', radius: '0.52m', target: '0.025m 0.037m 0m' } }),
 
   // תפרחות
   'flowers-regular': card('flowers-regular'),

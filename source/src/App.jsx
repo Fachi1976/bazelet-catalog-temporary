@@ -208,14 +208,88 @@ function AnimatedModel({ src, alt, poster, radius, targetOpen, noOpen }) {
   );
 }
 
+
+// Desktop-only: on hover the card photo turns into the rotating 3D model, which opens
+const canHover3D = typeof window !== 'undefined' && window.matchMedia &&
+  window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+function HoverModel({ model, active }) {
+  const [mount, setMount] = useState(false);
+  const [shown, setShown] = useState(false);
+  const ref = useRef(null);
+  const st = useRef({ raf: 0, t: 0, loaded: false });
+  useEffect(() => { if (active && !mount) loadMV().then(() => setMount(true)); }, [active, mount]);
+  useEffect(() => {
+    const v = ref.current; if (!v) return;
+    const onLoad = () => { v.play(); v.pause(); v.currentTime = 0; st.current.loaded = true; setShown(activeRef.current); run(activeRef.current); };
+    v.addEventListener('load', onLoad);
+    return () => { v.removeEventListener('load', onLoad); cancelAnimationFrame(st.current.raf); };
+  }, [mount]);
+  const activeRef = useRef(active); activeRef.current = active;
+  const run = (open) => {
+    const v = ref.current; if (!v || !st.current.loaded) return;
+    cancelAnimationFrame(st.current.raf);
+    const dur = Math.max(0.01, (v.duration || 2) - 0.001);
+    const from = st.current.t, to = open ? dur : 0;
+    v.cameraTarget = open && model.target ? model.target : 'auto auto auto';
+    const delay = open ? 450 : 0, t0 = performance.now() + delay, len = Math.abs(to - from) * 900;
+    const step = (now) => {
+      const k = now < t0 ? 0 : (len ? Math.min(1, (now - t0) / len) : 1);
+      const t = from + (to - from) * k;
+      v.play(); v.pause(); v.currentTime = t; st.current.t = t;
+      if (k < 1) st.current.raf = requestAnimationFrame(step);
+    };
+    st.current.raf = requestAnimationFrame(step);
+  };
+  useEffect(() => {
+    if (!st.current.loaded) return;
+    setShown(active); run(active);
+    const v = ref.current;
+    if (v && !active) { const id = setTimeout(() => { v.resetTurntableRotation?.(0); }, 500); return () => clearTimeout(id); }
+  }, [active]);
+  if (!mount) return null;
+  return (
+    <model-viewer
+      ref={ref}
+      class={`card-3d ${shown ? 'on' : ''}`}
+      src={model.src}
+      animation-name="Animation"
+      auto-rotate=""
+      auto-rotate-delay="0"
+      rotation-per-second="40deg"
+      interaction-prompt="none"
+      disable-zoom=""
+      camera-orbit={`35deg 65deg ${model.radius}`}
+      interpolation-decay="160"
+      shadow-intensity="1"
+      shadow-softness="0.6"
+      tone-mapping="neutral"
+      environment-image={ENV_HDR}
+      loading="eager"
+      reveal="auto"
+      style={{ '--poster-color': 'transparent', background: 'transparent' }}
+    ></model-viewer>
+  );
+}
+// Warm up the home-page models on desktop so the first hover is instant
+if (canHover3D) {
+  (window.requestIdleCallback || ((f) => setTimeout(f, 2500)))(() => {
+    loadMV();
+    Object.values(cardImages).forEach((c) => c.model && fetch(c.model.src).catch(() => {}));
+  });
+}
+
 // =====================================================
 // CARDS
 // =====================================================
 function CategoryCard({ index, item, count, onClick }) {
   const img = cardImages[item.id];
+  const has3d = canHover3D && img?.model;
+  const [hov, setHov] = useState(false);
   return (
-    <button className="card" onClick={onClick}>
+    <button className={`card ${has3d ? 'has-3d' : ''} ${hov ? 'hov' : ''}`} onClick={onClick}
+      onMouseEnter={has3d ? () => setHov(true) : undefined} onMouseLeave={has3d ? () => setHov(false) : undefined}>
       <div className={`card-photo ${img?.dark ? 'dark' : ''} ${img?.studio ? 'studio' : ''}`}>
+        {has3d && <HoverModel model={img.model} active={hov} />}
         <span className="card-idx">{pad(index + 1)}</span>
         <span className="card-count">{count} {packWord(count)}</span>
         {img ? (
